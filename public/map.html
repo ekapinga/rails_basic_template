@@ -1,0 +1,106 @@
+<html>
+<head>
+ <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+ <title>[Google Maps API v3] 21. Overlays OpenStreetMap tiles</title>
+ <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+ 
+ <script type="text/javascript">
+  var map;
+  var myOptions;
+ 
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(13.4, 80.15);
+    myOptions =	{
+      zoom: 9,
+      center: myLatlng,
+      scrollwheel: true,
+      scaleControl: true,
+      disableDoubleClickZoom: false,
+      navigationControl: true,
+      navigationControlOptions: {
+        style: google.maps.NavigationControlStyle.DEFAULT
+      },
+      mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU} 
+  };
+ 
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+ 
+  var osmmapnik = new google.maps.ImageMapType({
+    getTileUrl: function(ll, z) {
+      var X = ll.x % (1 << z);
+      return "http://tile.openstreetmap.org/" + z + "/" + X + "/" + ll.y + ".png";
+    },
+    tileSize: new google.maps.Size(256, 256),
+    isPng: true,
+    maxZoom: 18,
+    name: "Mapnik",
+    alt: "Open Streetmap Mapnik"
+  });
+ 
+  var osmarender = new google.maps.ImageMapType({
+    getTileUrl: function(ll, z) {
+      var X = ll.x % (1 << z);
+      return "http://tah.openstreetmap.org/Tiles/tile/" + z + "/" + X + "/" + ll.y + ".png";
+    },
+    tileSize: new google.maps.Size(256, 256),
+    isPng: true,
+    maxZoom: 18,
+    name: "Osmarender",
+    alt: "Open Streetmap Osmarender"
+  });
+ 
+  var opnv_karte = new google.maps.ImageMapType({
+    getTileUrl: function(ll, z) {
+      var X = ll.x % (1 << z);
+      return "http://tile.xn--pnvkarte-m4a.de/tilegen/" + z + "/" + X + "/" + ll.y + ".png";
+    },
+    tileSize: new google.maps.Size(256, 256),
+    isPng: true,
+    maxZoom: 18,
+    name: "OPNV",
+    alt: "Open Streetmap OPNV"
+  });
+ 
+  map.mapTypes.set('osm', osmmapnik);
+  map.mapTypes.set('osma', osmarender);
+  map.mapTypes.set('opnv', opnv_karte);
+  map.setMapTypeId('osm');
+ 
+  var optionsUpdate = {
+    mapTypeControlOptions: {
+      mapTypeIds: ['osm','osma'], //,'opnv'
+      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+    }
+  };
+ 
+  map.setOptions(optionsUpdate);
+ 
+}
+ 
+ 
+  function detectBrowser() {
+    var useragent = navigator.userAgent;
+    var mapdiv = document.getElementById("map_canvas");
+ 
+    if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1) {				
+      mapdiv.style.width = '100%';
+      mapdiv.style.height = '100%';
+      myOptions = {
+        navigationControlOptions: {
+          style: google.maps.NavigationControlStyle.ANDROID
+        }
+      };
+      map.setOptions(myOptions);
+    } else {
+      mapdiv.style.width = '850px';
+      mapdiv.style.height = '550px';
+    }
+  }
+ 
+  </script>
+</head>
+<body style="margin:0px; padding:0px;" onload="initialize(); detectBrowser();">
+  <div id="map_canvas"></div>
+</body>
+</html>

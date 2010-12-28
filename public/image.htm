@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Desaturate Image using JavaScript</title>
+
+<script type="text/javascript" src="image_files/jquery-1.js"></script>
+<link href="image_files/main.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#toggleDesaturate').click(function(){
+            var imgObj = document.getElementById('image');
+            
+            if($.browser.msie){
+                grayscaleImageIE(imgObj);
+            } else {
+                imgObj.src = grayscaleImage(imgObj);
+            }           
+        });
+    });
+
+    function grayscaleImageIE(imgObj)
+    {
+        imgObj.style.filter = 'progid:DXImageTransform.Microsoft.BasicImage(grayScale=1)';
+    }
+
+    function grayscaleImage(imgObj)
+    {
+        var canvas = document.createElement('canvas');
+        var canvasContext = canvas.getContext('2d');
+        
+        var imgW = imgObj.width;
+        var imgH = imgObj.height;
+        canvas.width = imgW;
+        canvas.height = imgH;
+        
+        canvasContext.drawImage(imgObj, 0, 0);
+        var imgPixels = canvasContext.getImageData(0, 0, imgW, imgH);
+        
+        for(var y = 0; y < imgPixels.height; y++){
+            for(var x = 0; x < imgPixels.width; x++){
+                var i = (y * 4) * imgPixels.width + x * 4;
+                //console.debug("First value is %s, second is %s and the last is %s", imgPixels.data[i] , imgPixels.data[i + 1] , imgPixels.data[i + 2]); 
+                var avg =  0 //(imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;
+                if(imgPixels.data[i] == 255){imgPixels.data[i] = avg;} 
+                if(imgPixels.data[i + 1] == 255){imgPixels.data[i + 1] = avg;} 
+                if(imgPixels.data[i + 2] == 255){imgPixels.data[i + 2] = avg;}
+            }
+        }
+        
+        canvasContext.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);
+        return canvas.toDataURL();
+    }
+</script>
+
+</head><div firebugversion="1.5.4" style="display: none;" id="_firebugConsole"></div><body>
+
+    <div id="page">
+        <div>
+            <p>
+                <strong>Original image:</strong><br>
+                <img src="image_files/nature-1.jpg" alt="">
+            </p>           
+            <p>
+                <strong>Image which will be desaturated:</strong><br>
+	            <img src="image_files/nature-1.jpg" alt="" id="image">
+            </p>           
+        </div>
+        <form><button id="toggleDesaturate" type="button">Desaturate Image</button></form>
+        <div class="clear"></div>
+    </div>
+</body></html>

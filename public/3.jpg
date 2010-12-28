@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Unbenanntes Dokument</title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+-->
+</style></head>
+
+<body>
+<table border="0" cellpadding="2" cellspacing="2">
+  <col width="241" />
+  <col width="125" />
+  <col width="80" span="2" />
+  <col width="151" />
+  <col width="278" />
+  <col width="151" />
+  <tr height="21">
+    <td width="241" height="21" bordercolor="#000000"> </td>
+    <td width="125" bordercolor="#000000"> </td>
+    <td width="160" colspan="2" bgcolor="#33CC66"><strong>API    Subscription</strong></td>
+    <td width="151" bgcolor="#33CC66">&nbsp;</td>
+    <td width="278" bgcolor="#33CC66">&nbsp;</td>
+  </tr>
+  <tr height="21">
+    <td height="21"><strong>Parameter</strong></td>
+    <td><strong>Values</strong></td>
+    <td><strong>no key</strong></td>
+    <td><strong>free</strong></td>
+    <td><strong>silver</strong></td>
+    <td><strong>gold</strong></td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>api_key</strong></td>
+    <td>your key</td>
+    <td bgcolor="#33CC66"> <p>-</p>
+    </td>
+    <td bgcolor="#33CC66">y</td>
+    <td bgcolor="#33CC66">y</td>
+    <td bgcolor="#33CC66">y</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>url</strong></td>
+    <td>url</td>
+    <td bgcolor="#33CC66">y</td>
+    <td bgcolor="#33CC66">y</td>
+    <td bgcolor="#33CC66">y</td>
+    <td bgcolor="#33CC66">y</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>width</strong> (thumbnail)</td>
+    <td>1-1280</td>
+    <td bgcolor="#33CC66">y<br />
+    def. 200<br />
+    range: 100-300</td>
+    <td bgcolor="#33CC66">y (def. 200)</td>
+    <td bgcolor="#33CC66">y (def. 200)</td>
+    <td bgcolor="#33CC66">y (def. 200)</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>quality</strong> (thumbnail)</td>
+    <td>10 - 100</td>
+    <td bgcolor="#FF3333">80</td>
+    <td bgcolor="#33CC66">y (def. 90)</td>
+    <td bgcolor="#33CC66">y (def. 90)</td>
+    <td bgcolor="#33CC66">y (def. 90)</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>output</strong> (text=status only as plain text - pic=binary data and <em><strong>status headers</strong></em>)</td>
+    <td>pic,text</td>
+    <td bgcolor="#FF3333">pic</td>
+    <td bgcolor="#33CC66">y (def. pic)</td>
+    <td bgcolor="#33CC66">y (def. pic)</td>
+    <td bgcolor="#33CC66">y (def. pic)</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>encoding</strong> (thumbnail)</td>
+    <td>jpg, png</td>
+    <td bgcolor="#FF3333">jpg</td>
+    <td bgcolor="#FF3333">jpg</td>
+    <td bgcolor="#33CC66">y (def. png)</td>
+    <td bgcolor="#33CC66">y (def. png)</td>
+  </tr>
+  
+  <tr height="20">
+    <td height="20"><strong>watermark</strong> (thumbnail)</td>
+    <td>0 - 1</td>
+    <td bgcolor="#FF3333">1</td>
+    <td bgcolor="#FF3333">1</td>
+    <td bgcolor="#33CC66">y (def. 0)</td>
+    <td bgcolor="#33CC66">y (def. 0)</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>mode</strong> (source capture)</td>
+    <td>page - screen</td>
+    <td bgcolor="#FF3333">screen</td>
+    <td bgcolor="#FF3333">screen</td>
+    <td bgcolor="#FF3333">screen</td>
+    <td bgcolor="#33CC66">y (def. screen)</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>generate</strong> (request refresh)</td>
+    <td>0 - 1</td>
+    <td bgcolor="#FF3333">0</td>
+    <td bgcolor="#FF3333">0</td>
+    <td bgcolor="#FF3333">0</td>
+    <td bgcolor="#33CC66">y (def. 0)</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>delay</strong> (time after page loaded)</td>
+    <td>1 - 30</td>
+    <td bgcolor="#FF3333">5</td>
+    <td bgcolor="#FF3333">5</td>
+    <td bgcolor="#FF3333">5</td>
+    <td bgcolor="#33CC66">y (def. 6)</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>bwidth</strong> (capture browser width)</td>
+    <td>200 - 1280</td>
+    <td bgcolor="#FF3333">1280</td>
+    <td bgcolor="#FF3333">1280</td>
+    <td bgcolor="#FF3333">1280</td>
+    <td bgcolor="#33CC66">y (def. 1280)</td>
+  </tr>
+  <tr height="20">
+    <td height="20"><strong>bheight</strong> (capture browser    height) if mode=screen</td>
+    <td>200 - 1024 </td>
+    <td bgcolor="#FF3333">1024</td>
+    <td bgcolor="#FF3333">1024</td>
+    <td bgcolor="#FF3333">1024</td>
+    <td bgcolor="#33CC66">y (def. 1024)</td>
+  </tr>
+</table>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5141095-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
